@@ -24,11 +24,10 @@ RUN mkdir /backend
 WORKDIR /backend
 
 # Copy the current directory contents into the container at /backend
-ADD . /backend/
+COPY . /backend
 
-RUN ls -la
-RUN pwd
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "./manage.py"]
-CMD ["runserver", "0.0.0.0:${$BACKEND_PORT}"]
+# ENTRYPOINT ["python", "./manage.py"]
+# CMD ["runserver", "0.0.0.0:${$BACKEND_PORT}"]
+EXPOSE $BACKEND_PORT
+CMD python manage.py runserver 0.0.0.0:$BACKEND_PORT
