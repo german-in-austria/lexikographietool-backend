@@ -24,7 +24,9 @@ RUN mkdir /backend
 WORKDIR /backend
 
 # Copy the current directory contents into the container at /backend
-COPY . /backend
+COPY . .
+
+RUN pip install -r requirements.txt
 
 # Install any needed packages specified in requirements.txt
 # ENTRYPOINT ["python", "./manage.py"]
