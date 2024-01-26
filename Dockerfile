@@ -17,19 +17,14 @@ ENV POSTGRES_USER $DB_USER
 ENV POSTGRES_HOST $DB_HOST
 ENV BACKEND_PORT 8080
 
-# create root directory for our project in the container
-RUN mkdir /backend
-
-# Set the working directory to /backend
-WORKDIR /backend
-
-# Copy the current directory contents into the container at /backend
-COPY . .
-
-RUN pip install -r requirements.txt
-
 # Install any needed packages specified in requirements.txt
 # ENTRYPOINT ["python", "./manage.py"]
 # CMD ["runserver", "0.0.0.0:${$BACKEND_PORT}"]
+
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+COPY . .
+
 EXPOSE $BACKEND_PORT
-CMD python manage.py runserver 0.0.0.0:$BACKEND_PORT
+CMD ["python", "manage.py", "runserver", "0.0.0.0:${$BACKEND_PORT}"]
