@@ -26,6 +26,8 @@ WORKDIR /backend
 # Copy the current directory contents into the container at /backend
 ADD . /backend/
 
+RUN ls -la
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
-CMD ["python", "manage.py", "runserver", "0.0.0.0:${$BACKEND_PORT}" ]
+ENTRYPOINT ["python", "manage.py"]
+CMD ["runserver", "0.0.0.0:${$BACKEND_PORT}"]
