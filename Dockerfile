@@ -15,7 +15,7 @@ ENV POSTGRES_PASSWORD $DB_PASSWORD
 ENV POSTGRES_DB $DB_NAME
 ENV POSTGRES_USER $DB_USER
 ENV POSTGRES_HOST $DB_HOST
-ENV BACKEND_PORT 8080
+ENV BACKEND_PORT 8000
 
 # Install any needed packages specified in requirements.txt
 # ENTRYPOINT ["python", "./manage.py"]
@@ -27,4 +27,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 EXPOSE $BACKEND_PORT
-CMD ["python", "manage.py", "runserver", "0.0.0.0:${BACKEND_PORT}"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
