@@ -27,4 +27,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 EXPOSE $BACKEND_PORT
-CMD ["python", "manage.py", "runserver", "0.0.0.0:${$BACKEND_PORT}"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:${BACKEND_PORT}"]
