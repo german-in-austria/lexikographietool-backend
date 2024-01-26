@@ -27,7 +27,8 @@ WORKDIR /backend
 ADD . /backend/
 
 RUN ls -la
+RUN pwd
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "manage.py"]
+ENTRYPOINT ["python", "./manage.py"]
 CMD ["runserver", "0.0.0.0:${$BACKEND_PORT}"]
