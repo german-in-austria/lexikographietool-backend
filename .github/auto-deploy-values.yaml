@@ -16,7 +16,7 @@ service:
     - ${app_name_in_url}-${ref_name}.${kube_ingress_base_domain}
   type: ClusterIP
   externalPort: 80
-  internalPort: 80
+  internalPort: 8000
 ingress:
   enabled: true
   path: "/"
