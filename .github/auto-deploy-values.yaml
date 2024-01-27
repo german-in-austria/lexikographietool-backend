@@ -16,20 +16,20 @@ service:
     - ${app_name_in_url}-${ref_name}.${kube_ingress_base_domain}
   type: ClusterIP
   externalPort: 80
-  internalPort: 8000
+  internalPort: 80
 ingress:
   enabled: true
   path: "/"
   annotations:
     kubernetes.io/ingress.class: "nginx"
 livenessProbe:
-  path: "/"
+  path: "/admin"
   initialDelaySeconds: 15
   timeoutSeconds: 15
   scheme: "HTTP"
   probeType: "httpGet"
 readinessProbe:
-  path: "/"
+  path: "/admin"
   initialDelaySeconds: 5
   timeoutSeconds: 3
   scheme: "HTTP"
